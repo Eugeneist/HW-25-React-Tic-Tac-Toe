@@ -46,6 +46,8 @@ const Game = () => {
     let status;
     if (winner) {
         status = `Winner: ${winner}`;
+    } else if (stepNumber == 9) {
+        status = `You have a tie! Try new game!`;
     } else {
         status = `Next player: ${xIsNext ? "X" : "O"}`;
     }
