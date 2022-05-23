@@ -19,7 +19,7 @@ const Game = () => {
 
         const isWinner = calculateWinner(squares);
 
-        if( squares[index] || isWinner ) {
+        if( squares[index] || isWinner.winner ) {
             return;
         }
 
@@ -44,9 +44,9 @@ const Game = () => {
     const winner = calculateWinner(current.squares);
 
     let status;
-    if (winner) {
-        status = `Winner: ${winner}`;
-    } else if (stepNumber == 9) {
+    if (winner.winnerName) {
+        status = `Winner: ${winner.winnerName}`;
+    } else if (stepNumber === 9) {
         status = `You have a tie! Try new game!`;
     } else {
         status = `Next player: ${xIsNext ? "X" : "O"}`;
@@ -55,7 +55,7 @@ const Game = () => {
     return (
         <div className="game">
             <div className="game-board">
-                <Board squares={current.squares} onClick={handleClick} />
+                <Board squares={current.squares} winners={winner.winnerLine} onClick={handleClick} />
             </div>
 
             <div className="game-info">

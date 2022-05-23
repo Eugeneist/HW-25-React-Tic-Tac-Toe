@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
 import Square from './Square';
 
-const Board = ( { squares, onClick } ) => {
+const Board = ( { squares, onClick, winners } ) => {
 
     const renderSquare = (index) => {
-        return <Square value={squares[index]} onClick={ () => onClick(index) } />;
+        const isWinnerSquare = winners.includes(index);
+        return <Square value={squares[index]} winner={isWinnerSquare} onClick={ () => onClick(index) } />;
     }
 
     return (
@@ -29,8 +30,9 @@ const Board = ( { squares, onClick } ) => {
 };
 
 Board.propTypes = {
-    squares: PropTypes.arrayOf(PropTypes.oneOf('X', 'O', 'null')).isRequired,
+    squares: PropTypes.arrayOf(PropTypes.oneOf(['X', 'O', 'null'])).isRequired,
     onClick: PropTypes.func.isRequired,
+    winners: PropTypes.arrayOf(PropTypes.number),
 }
 
 export default Board;
