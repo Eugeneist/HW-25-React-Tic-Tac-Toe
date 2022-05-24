@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import calculateWinner from "../helpers/calculateWinner";
 import Board from "./Board";
+import GameInfo from "./GameInfo";
 
 const Game = () => {
     const [ history, setHistory ] = useState([
@@ -59,21 +60,7 @@ const Game = () => {
             </div>
 
             <div className="game-info">
-                <div>{status}</div>
-
-                <ol>
-                    {history.map((step, index) => {
-                        const isStartStep = index === 0;
-
-                        return (
-                            <li  key={index}>
-                                <button onClick={jumpTo(index)}>
-                                    {isStartStep ? `Start new game` : `Go to move #${index}`}
-                                </button>
-                            </li>
-                        );
-                    })} 
-                </ol>
+                <GameInfo history={history} jumpTo={jumpTo} status={status} />
             </div>
         </div>
     )

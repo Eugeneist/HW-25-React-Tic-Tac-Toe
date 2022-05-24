@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 
 const GameInfo = ({history, jumpTo, status}) => {
+
     return (
         <div>
             <div>{status}</div>
@@ -23,5 +24,12 @@ const GameInfo = ({history, jumpTo, status}) => {
 };
 
 GameInfo.propTypes ={
+    history: PropTypes.arrayOf(PropTypes.shape({
+        squares: PropTypes.arrayOf(PropTypes.oneOf(['X', 'O', 'null']))
+    })).isRequired,
+    jumpTo: PropTypes.func.isRequired,
+    status: PropTypes.string.isRequired,
 
 }
+
+export default GameInfo;
