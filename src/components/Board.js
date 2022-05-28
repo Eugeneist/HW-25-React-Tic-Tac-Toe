@@ -5,7 +5,7 @@ const Board = ( { squares, onClick, winners } ) => {
 
     const renderSquare = (index) => {
         const isWinnerSquare = winners.includes(index);
-        return <Square value={squares[index]} winner={isWinnerSquare} onClick={ () => onClick(index) } />;
+        return <Square value={squares[index]} winner={isWinnerSquare} onClick={ () => { onClick(index) } } />;
     }
 
     return (
